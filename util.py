@@ -1,5 +1,4 @@
 #encoding: utf-8
-
 import math
 
 def C(n, r):
@@ -10,11 +9,10 @@ def modC(n, r, mod):
     nf = factorial(n) 
     nrf = factorial(n-r)
     rf = factorial(r)
-    nr_pow = cached_pow(nrf)
-    r_pow = cached_pow(rf)
+    nr_pow = mod_pow(nrf, mod)
+    r_pow = mod_pow(rf, mod)
     
     v = nf * nr_pow(mod-2) * r_pow(mod-2)
-    print(f"DEBUG {n}C{r}={v}")
     return v % mod
 
 def mod_factorial(mod):
@@ -62,12 +60,15 @@ def cached_factorial():
 
 factorial, inverse_fac = cached_factorial()
 
-def cached_pow(x):
+def mod_pow(x, mod):
     xx = [1, x]
     def _pow(y, x=x):
+        if y == 0:
+            return 1
         while len(xx) <= math.log(y, 2)+1:
-            xx.append(xx[-1] * xx[-1])
-            x *= x
+            v = xx[-1] * xx[-1]
+            v %= mod
+            xx.append(v)
         i = 1
         result = 1
         while y > 0:
@@ -76,7 +77,24 @@ def cached_pow(x):
             y = y >> 1
             i += 1
         return result
+    return _pow
 
+
+def cached_pow(x):
+    xx = [1, x]
+    def _pow(y, x=x):
+        if y == 0:
+            return 1
+        while len(xx) <= math.log(y, 2)+1:
+            xx.append(xx[-1] * xx[-1])
+        i = 1
+        result = 1
+        while y > 0:
+            if y % 2 == 1:
+                result *= xx[i]
+            y = y >> 1
+            i += 1
+        return result
     return _pow
 
 
@@ -96,10 +114,6 @@ def pow_test2():
         v = pow2(i)
         print(f"2^{i}={v}")
 
-    #i = 100000
-    #v = pow2(i)
-    #print(f"2^{i}={v}")
-
 def fac_test():
     for i in range(6):
         v = factorial(i)
@@ -113,17 +127,39 @@ def comb_test():
         v2 = modC(n, i, p)
         print(f"{n}C{i}={v} --- {v2} (mod {p})")
 
-    n = 50000
-    r = 25001
-    v = modC(n, r, 10090)
+    n = 500000
+    r = 250009
+    v = modC(n, r, 998244353)
     print(f"{n}C{r}={v}")
 
+
+def primes(n):
+    yield 2
+    import numpy as np
+    nn = (n // 3) + 1
+    a = np.arange(1, nn+1)
+    b = a * a.reshape((nn, 1))
+    b = b[1:,1:]
+    c = b.reshape((nn-1)*(nn-1), )
+    notprimes = set(c)
+    for p in range(3, n+1, 2):
+        if p not in notprimes:
+            yield p
+    
+def prime_test(n):
+    print("prime:", end="")
+    for i in primes(n):
+        print(f"{i}", end=", ") 
+    print("")
 
 def test():
     pow_test()
     pow_test2()
     fac_test()
     comb_test()
+
+    n=10000
+    prime_test(n)
 
 if __name__ == '__main__':
     test()
