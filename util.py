@@ -3,6 +3,25 @@ import math
 
 MOD = 998244353
 
+
+def cached_modC(n, mod):
+    fac = mod_factorial(mod)
+    nf = fac(n)
+    def modC(r):
+        nrf = fac(n-r)
+        nr_pow = mod_pow(nrf, mod)
+        rf = fac(r)
+        r_pow = mod_pow(rf, mod)
+        result = nf
+        result *= nr_pow(mod-2)
+        result %= mod
+        result *= r_pow(mod-2)
+        result %= mod
+
+        return result
+
+    return modC
+
 def mod_factorial(mod):
     cache = [1,1,2]
     def _factorial(n):
