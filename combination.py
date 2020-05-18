@@ -1,4 +1,3 @@
-
 MOD = 998244353
 import numpy as np
 def modC(n, mod):
@@ -8,6 +7,7 @@ def modC(n, mod):
 
     while result[0] == 0:
         result = result  + np.roll(result, -1)
+        result %= mod
 
     return result
 
@@ -17,8 +17,9 @@ def test():
         result = modC(i, MOD)
         print(f"i={i} {result}")
     
-    n = 2500
+    n = 5000
     result= modC(n, MOD)
     print(f"i={n} {result}")
+
 if __name__ == '__main__':
     test()
