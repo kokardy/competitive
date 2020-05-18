@@ -3,22 +3,6 @@ import math
 
 MOD = 998244353
 
-def C(n, r):
-    return int(factorial(n) * inverse_fac(n-r) * inverse_fac(r))
-
-def cached_modC(n, mod):
-    factorial = mod_factorial(mod)
-    nf = factorial(n)
-    def modC(r):
-        nonlocal n, mod
-        nrf = factorial(n-r)
-        rf = factorial(r)
-        nr_pow = mod_pow(nrf, mod)
-        r_pow = mod_pow(rf, mod)
-        v = nf * nr_pow(mod-2) * r_pow(mod-2)
-        return v % mod
-    return modC
-
 def mod_factorial(mod):
     cache = [1,1,2]
     def _factorial(n):
@@ -133,45 +117,11 @@ def modfac_test():
         print(f"{i}!={v1}")
 
 
-def comb_test():
-    n = 5
-    p = 23
-    modC = cached_modC(n, p)
-    for i in range(n+1):
-        v = C(n,i)
-        v2 = modC(i)
-        print(f"{n}C{i}={v} --- {v2} (mod {p})")
-
-
-
-def primes(n):
-    yield 2
-    import numpy as np
-    nn = (n // 3) + 1
-    a = np.arange(1, nn+1)
-    b = a * a.reshape((nn, 1))
-    b = b[1:,1:]
-    c = b.reshape((nn-1)*(nn-1), )
-    notprimes = set(c)
-    for p in range(3, n+1, 2):
-        if p not in notprimes:
-            yield p
-    
-def prime_test(n):
-    print("prime:", end="")
-    for i in primes(n):
-        print(f"{i}", end=", ") 
-    print("")
-
 def test():
     #pow_test()
     #pow_test2()
     fac_test()
     modfac_test()
-    #comb_test()
-
-    #n=10000
-    #prime_test(n)
 
 if __name__ == '__main__':
     test()
