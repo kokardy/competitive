@@ -1,6 +1,7 @@
 MOD = 998244353
 import numpy as np
-def modC(n, mod):
+
+def modCall(n, mod):
     result = np.array(np.zeros(n+1), dtype=np.int64)
     result[-1] = 1
     result[-2] = 1
@@ -14,11 +15,11 @@ def modC(n, mod):
 def test():
     n = 10
     for i in range(2, n):
-        result = modC(i, MOD)
+        result = modCall(i, MOD)
         print(f"i={i} {result}")
     
     n = 5000
-    result= modC(n, MOD)
+    result= modCall(n, MOD)
     print(f"i={n} {result}")
 
 if __name__ == '__main__':
