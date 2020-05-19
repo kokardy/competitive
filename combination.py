@@ -4,6 +4,8 @@ import numpy as np
 
 
 def create_modC(n, mod):
+    if n == 0:
+        return (lambda r: 1)
     b = int(math.log(mod-2, 2)) + 1
     fac = np.zeros((b, n+1), dtype=np.int64)
     inv = np.ones(n+1, dtype=np.int64)
