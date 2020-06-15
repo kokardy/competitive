@@ -22,8 +22,7 @@ def primes(n):
     for k in range(1, n):
         if not numbers[k]:
             continue
-        if numbers[k]:
-            yield k
+        yield k
         i = 1
         while k * i < n: 
             ki = k*i
