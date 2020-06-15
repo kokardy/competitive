@@ -16,7 +16,6 @@ def primes(n):
     import numpy as np
     numbers = np.full(n, True, dtype=np.bool)
 
-    numbers[0:n] = True
     numbers[0] = False
     numbers[1] = False
 
