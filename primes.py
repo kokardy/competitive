@@ -1,3 +1,12 @@
+def prime_factorization(n):
+    result = dict()
+    tmp = n
+    for p in primes(n):
+        while tmp % p == 0:
+            result[p] = result.get(p, 0) + 1
+            tmp /= p
+    
+    return result
 
 def primes2(n):
     yield 2
@@ -14,12 +23,12 @@ def primes2(n):
 
 def primes(n):
     import numpy as np
-    numbers = np.full(n, True, dtype=np.bool)
+    numbers = np.full(n+1, True, dtype=np.bool)
 
     numbers[0] = False
     numbers[1] = False
 
-    for k in range(1, n):
+    for k in range(1, n+1):
         if not numbers[k]:
             continue
         yield k
@@ -43,9 +52,11 @@ def prime_test2(n):
     print("PASS TEST")
 
 def test():
-    prime_test(1000)
     prime_test2(1000)
-    
+    n = 5039
+    pf = prime_factorization(n)
+    print(f"{n}=", end="")
+    print("*".join([f"{k}^{v}" for k, v in pf.items()]))
 
 if __name__ == '__main__':
     test()
