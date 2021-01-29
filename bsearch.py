@@ -1,4 +1,4 @@
-def bsearch(bot: int, top: int, f):
+def bsearch_int(bot: int, top: int, f):
     """
     一般化二分探索関数
 
@@ -26,6 +26,7 @@ def bsearch(bot: int, top: int, f):
             bot = mid
 
     return bot, top
+
 
 def bsearch_float(bot: float, top: float, diff: float, f):
     """
@@ -59,12 +60,22 @@ def bsearch_float(bot: float, top: float, diff: float, f):
     return bot, top
 
 
+def bsearch(bot, top, f, midf=lambda x, y: (x+y)//2, accuracy=1):
+    while top - bot > accuracy:
+        mid = midf(bot, top)
+        if f(mid):
+            bot = mid
+        else:
+            top = mid
+
+    return bot, top
+
 
 def main():
     bot = 1
     top = 10 ** 100
 
-    f = lambda x: x < 39098
+    def f(x): return x < 39098
 
     m1, m2 = bsearch(bot, top, f)
 

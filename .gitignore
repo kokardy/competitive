@@ -1,3 +1,10 @@
+
+# 解法のところは残さない
+atcoder/
+ABC*/
+AGC*/
+ARC*/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
