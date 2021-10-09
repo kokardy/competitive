@@ -1,16 +1,19 @@
-def prime_factorization(n):
-    result = dict()
-    tmp = n
+from typing import Dict, Generator
+
+
+def prime_factorization(n: int) -> Dict[int, int]:
+    result: Dict[int, int] = dict()
+    tmp: int = n
     for p in primes(n):
         while tmp % p == 0:
             result[p] = result.get(p, 0) + 1
-            tmp /= p
+            tmp //= p
 
     return result
 
 
 # slow
-def primes2(n):
+def primes2(n: int) -> Generator[int, None, None]:
     yield 2
     import numpy as np
 
@@ -28,10 +31,10 @@ def primes2(n):
 
 
 # faster than primes2
-def primes(n):
+def primes(n: int) -> Generator[int, None, None]:
     import numpy as np
 
-    numbers = np.full(n + 1, True, dtype=np.bool)
+    numbers = np.full(n + 1, True, dtype="bool")
 
     numbers[0] = False
     numbers[1] = False
@@ -45,5 +48,3 @@ def primes(n):
             ki = k * i
             numbers[ki] = False
             i += 1
-
-
