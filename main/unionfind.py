@@ -36,27 +36,6 @@ class UnionFind:
     
 
 
-def test():
-    u = UnionFind(100)
-    def _test(x, y):
-        print(f"{x=} {y=} same:{u.same(x,y)} member:{u.member(x)}")
-
-    def _merge(x, y):
-        u.merge(x, y)
-        print(f"merge:{x=} {y=}")
-    
-    _merge(1,2)
-    _merge(3,2)
-    _merge(3,4)
-    _merge(4,2)
-
-    _merge(5,6)
-    _merge(9,6)
-
-    _merge(4,9)
-    
-    _test(4,9)
-
 
 if __name__ == "__main__":
     test()
