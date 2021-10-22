@@ -24,9 +24,12 @@ class Tree:
     def bfs(self, start_node: int) -> Generator[Tuple[int, int], None, None]:
         queue: Deque[Tuple[int, int]] = deque()
         queue.append((0, start_node))
+        done: Set[int] = set()
         while len(queue) > 0:
-            for _ in range(len(queue)):
-                depth_node = queue.popleft()
-                yield depth_node
-                depth, node = depth_node
-                queue.extend(((depth + 1, sub_nodes) for sub_nodes in self.nodes[node]))
+            depth_node = queue.popleft()
+            depth, node = depth_node
+            if node in done:
+                continue
+            yield depth_node
+            done.add(node)
+            queue.extend(((depth + 1, sub_nodes) for sub_nodes in self.nodes[node]))

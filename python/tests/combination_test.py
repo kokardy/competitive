@@ -1,10 +1,10 @@
 MOD = 998244353
 
-from main.combination import create_mod_combinations
-from main.combination import mod_combination_all
-
 
 def test():
+    from main.combination import create_mod_combinations
+    from main.combination import mod_combination_all
+
     def _test(n):
         expected = mod_combination_all(n, MOD)
         mod_combinations = create_mod_combinations(n, MOD)
@@ -18,6 +18,8 @@ def test():
 
 
 def test__combination():
+
+    from main.combination import mod_combination_all
 
     expected = [
         (0,),
