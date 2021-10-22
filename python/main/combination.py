@@ -1,41 +1,20 @@
-from typing import Callable, Iterable
+from typing import Callable, Iterable, List
 
 
 def create_mod_combinations(n: int, mod: int) -> Callable[[int], int]:
     """create function: function(r) -> nCr % mod"""
-    import math
-    import numpy as np
-
-    if n == 0:
-        return lambda r: 1
-    b = int(math.log(mod - 2, 2)) + 1
-    fac = np.zeros((b, n + 1), dtype="int64")
-    inv = np.ones(n + 1, dtype="int64")
-    fac[0, 0], fac[0, 1] = 1, 1
-    for i in range(2, n + 1):
-        fac[0, i] = (fac[0, i - 1] * i) % mod
-    for i in range(1, b):
-        fac[i, :] = (fac[i - 1, :] ** 2) % mod
-
-    indice = []
-    n = mod - 2
-    i = 0
-    while n > 0:
-        if n % 2 == 1:
-            indice.append(i)
-        n = n >> 1
-        i += 1
-
-    for i in indice:
-        inv *= fac[i, :]
-        inv %= mod
-
-    fac = fac[0, :]
+    fac: List[int] = [1]
+    inv: List[int] = [1]
+    for i in range(1, n + 1):
+        _fac = (fac[-1] * i) % mod
+        _inv = pow(_fac, -1, mod)
+        fac.append(_fac)
+        inv.append(_inv)
 
     def _mod_combinations(r):
         result = fac[n] * inv[n - r]
         result %= mod
-        result *= inv[r] % mod
+        result *= inv[r]
         result %= mod
         return result
 
