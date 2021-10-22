@@ -1,9 +1,9 @@
 from main.unionfind import UnionFind
-import pytest
 
 
 unions1 = [1, 2, 3, 4, 9]
 unions6 = [6, 5, 8]
+
 
 class TestUnionFind:
     def test_unionfind(self):

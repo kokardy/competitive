@@ -1,8 +1,7 @@
 from typing import Callable, Iterable
-from typing import List, Tuple
 
 
-def create_modC(n: int, mod: int) -> Callable[[int], int]:
+def create_mod_combinations(n: int, mod: int) -> Callable[[int], int]:
     """create function: function(r) -> nCr % mod"""
     import math
     import numpy as np
@@ -19,12 +18,12 @@ def create_modC(n: int, mod: int) -> Callable[[int], int]:
         fac[i, :] = (fac[i - 1, :] ** 2) % mod
 
     indice = []
-    N = mod - 2
+    n = mod - 2
     i = 0
-    while N > 0:
-        if N % 2 == 1:
+    while n > 0:
+        if n % 2 == 1:
             indice.append(i)
-        N = N >> 1
+        n = n >> 1
         i += 1
 
     for i in indice:
@@ -33,17 +32,17 @@ def create_modC(n: int, mod: int) -> Callable[[int], int]:
 
     fac = fac[0, :]
 
-    def _modC(r):
+    def _mod_combinations(r):
         result = fac[n] * inv[n - r]
         result %= mod
         result *= inv[r] % mod
         result %= mod
         return result
 
-    return _modC
+    return _mod_combinations
 
 
-def modCall(n: int, mod: int) -> Iterable[int]:
+def mod_combination_all(n: int, mod: int) -> Iterable[int]:
     """return [nC0, nC1, nC2, ..., nCn]"""
     import numpy as np
 
