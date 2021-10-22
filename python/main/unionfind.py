@@ -1,10 +1,9 @@
-
 class UnionFind:
     def __init__(self, n):
         self.n = n
         self.parent = list(range(n))
         self.group = [set([i]) for i in range(n)]
-    
+
     def par(self, m):
         if self.parent[m] == m:
             return m
@@ -15,7 +14,7 @@ class UnionFind:
 
     def same(self, m1, m2):
         return self.par(m1) == self.par(m2)
-    
+
     def merge(self, m1, m2):
         m1 = self.par(m1)
         m2 = self.par(m2)
@@ -29,13 +28,7 @@ class UnionFind:
             _group = self.member(m2)
             self.parent[m2] = m1
             self.group[m1] |= _group
-    
+
     def member(self, m):
         _par = self.par(m)
         return self.group[_par]
-    
-
-
-
-if __name__ == "__main__":
-    test()

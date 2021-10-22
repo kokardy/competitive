@@ -1,7 +1,6 @@
 # encoding: utf-8
 from typing import Callable
 from typing import List
-import math
 
 
 def mod_factorial(mod: int) -> Callable[[int], int]:

@@ -2,6 +2,7 @@ from main.factorial import mod_factorial
 
 MOD = 998244353
 
+
 def test__modfac():
     from functools import reduce
 

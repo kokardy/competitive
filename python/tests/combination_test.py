@@ -1,15 +1,15 @@
 MOD = 998244353
 
+from main.combination import create_mod_combinations
+from main.combination import mod_combination_all
+
 
 def test():
-    from main.combination import create_modC
-    from main.combination import modCall
-
     def _test(n):
-        expected = modCall(n, MOD)
-        modC = create_modC(n, MOD)
+        expected = mod_combination_all(n, MOD)
+        mod_combinations = create_mod_combinations(n, MOD)
         for i, e in zip(range(0, n + 1), expected):
-            result = modC(i)
+            result = mod_combinations(i)
             print(f"{n}C{i} result:{result} : expected:{e}")
             assert result == e
 
@@ -18,7 +18,6 @@ def test():
 
 
 def test__combination():
-    from main.combination import modCall
 
     expected = [
         (0,),
@@ -31,7 +30,7 @@ def test__combination():
     ]
 
     def _test(n):
-        result = tuple(modCall(n, MOD))
+        result = tuple(mod_combination_all(n, MOD))
         e = expected[n]
         print(f"{n}: result:{result} expected:{e}")
         assert result == e
