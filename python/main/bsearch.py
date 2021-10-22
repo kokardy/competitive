@@ -1,4 +1,7 @@
-def bsearch_int(bot: int, top: int, f):
+from typing import Callable, Tuple
+
+
+def bsearch_int(bot: int, top: int, f: Callable[[int], bool]) -> Tuple[int, int]:
     """
     一般化二分探索関数
 
@@ -28,7 +31,9 @@ def bsearch_int(bot: int, top: int, f):
     return bot, top
 
 
-def bsearch_float(bot: float, top: float, diff: float, f):
+def bsearch_float(
+    bot: float, top: float, diff: float, f: Callable[[float], bool]
+) -> Tuple[float, float]:
     """
     一般化二分探索関数 float版
 
@@ -57,7 +62,7 @@ def bsearch_float(bot: float, top: float, diff: float, f):
         else:
             bot = mid
 
-    return bot, top
+    return (bot, top)
 
 
 def bsearch(bot, top, f, midf=lambda x, y: (x + y) // 2, accuracy=1):
@@ -69,23 +74,3 @@ def bsearch(bot, top, f, midf=lambda x, y: (x + y) // 2, accuracy=1):
             top = mid
 
     return bot, top
-
-
-def main():
-    bot = 1
-    top = 10 ** 100
-
-    def f(x):
-        return x < 39098
-
-    m1, m2 = bsearch(bot, top, f)
-
-    print(m1, m2)
-
-    m1, m2 = bsearch_float(1.0, 10000.3, 0.00001, lambda x: x < 399.9)
-
-    print(m1, m2)
-
-
-if __name__ == "__main__":
-    main()
