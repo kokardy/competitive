@@ -19,34 +19,3 @@ class BIT:
             s = self.operator(s, self.tree[i])
             i -= i & -i
         return s
-
-
-def test():
-    bit = BIT(10, int.__add__, 0)
-    bit.update(2, 10)
-    bit.update(5, 5)
-    print(bit.value(3))
-    print(bit.value(6))
-    bit.update(3, -6)
-    print(bit.value(6))
-    print(bit.value(6) - bit.value(3))
-
-
-def test2():
-    bit = BIT(10, int.__mul__, 1)
-    bit.update(2, 10)
-    bit.update(5, 5)
-    print(bit.value(3))
-    print(bit.value(6))
-    bit.update(3, -6)
-    print(bit.value(6))
-    print(bit.value(6) - bit.value(3))
-
-
-def main():
-    test()
-    test2()
-
-
-if __name__ == "__main__":
-    main()
