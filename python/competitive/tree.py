@@ -33,3 +33,16 @@ class Tree:
             yield depth_node
             done.add(node)
             queue.extend(((depth + 1, sub_nodes) for sub_nodes in self.nodes[node]))
+
+    def dfs(self, start_node: int) -> Generator[Tuple[int, int], None, None]:
+        stack: Deque[Tuple[int, int]] = deque()
+        stack.append((0, start_node))
+        done: Set[int] = set()
+        while len(stack) > 0:
+            depth_node = stack.pop()
+            depth, node = depth_node
+            if node in done:
+                continue
+            yield depth_node
+            done.add(node)
+            stack.extend(((depth + 1, sub_nodes) for sub_nodes in self.nodes[node]))

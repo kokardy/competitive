@@ -17,7 +17,7 @@ def test():
         _test(n)
 
 
-def test__combination():
+def test_combination():
 
     from competitive.combination import mod_combination_all
 
@@ -30,6 +30,8 @@ def test__combination():
         (1, 5, 10, 10, 5, 1),
         (1, 6, 15, 20, 15, 6, 1),
     ]
+
+    print("")
 
     def _test(n):
         result = tuple(mod_combination_all(n, MOD))
