@@ -1,6 +1,6 @@
 def test_plus():
     print("plus BIT")
-    from main.BIT import BIT
+    from competitive.BIT import BIT
 
     n = 10
     bit = BIT(n, lambda x, y: x + y, 0)
@@ -27,7 +27,7 @@ def test_plus():
 
 def test_mul():
     print("mul BIT")
-    from main.BIT import BIT
+    from competitive.BIT import BIT
 
     n = 10
     bit = BIT(n, lambda x, y: x * y, 1)

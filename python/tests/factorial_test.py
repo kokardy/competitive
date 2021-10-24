@@ -1,4 +1,4 @@
-from main.factorial import mod_factorial
+from competitive.factorial import mod_factorial
 
 MOD = 998244353
 
