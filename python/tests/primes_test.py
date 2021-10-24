@@ -1,4 +1,4 @@
-from main.primes import primes, prime_factorization
+from competitive.primes import primes, prime_factorization
 
 
 def test__primes():

@@ -1,4 +1,4 @@
-from main.unionfind import UnionFind
+from competitive.unionfind import UnionFind
 
 
 unions1 = [1, 2, 3, 4, 9]

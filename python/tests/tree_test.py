@@ -1,4 +1,4 @@
-from main.tree import Tree
+from competitive.tree import Tree
 
 
 def test__tree():

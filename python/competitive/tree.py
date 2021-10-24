@@ -1,6 +1,6 @@
-from typing import List, Dict, Union, Set, Tuple, Generator, Iterable, Deque
 from collections import defaultdict
 from collections import deque
+from typing import Deque, Dict, Generator, Iterable, List, Set, Tuple, Union
 
 
 class Tree:

@@ -2,8 +2,8 @@ MOD = 998244353
 
 
 def test():
-    from main.combination import create_mod_combinations
-    from main.combination import mod_combination_all
+    from competitive.combination import create_mod_combinations
+    from competitive.combination import mod_combination_all
 
     def _test(n):
         expected = mod_combination_all(n, MOD)
@@ -19,7 +19,7 @@ def test():
 
 def test__combination():
 
-    from main.combination import mod_combination_all
+    from competitive.combination import mod_combination_all
 
     expected = [
         (0,),

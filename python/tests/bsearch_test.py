@@ -1,5 +1,5 @@
 def test():
-    from main.bsearch import bsearch_int, bsearch_float
+    from competitive.bsearch import bsearch_int, bsearch_float
 
     bot = 1
     top = 10 ** 100
