@@ -1,7 +1,7 @@
 from competitive.tree import Tree
 
 
-def test__tree():
+def test_tree():
     tree = Tree(10)
     edges = (
         (0, 1),
@@ -31,7 +31,18 @@ def test__tree():
     max_depth = 0
     max_depth_node = start
 
+    print("-----bfs-----")
     for depth, node in tree.bfs(0):
+        print(f"depth: {depth} node: {node}")
+        if depth > max_depth:
+            max_depth = depth
+            max_depth_node = node
+
+    assert (max_depth, max_depth_node) == expected
+
+    print("-----dfs-----")
+    for depth, node in tree.dfs(0):
+        print(f"depth: {depth} node: {node}")
         if depth > max_depth:
             max_depth = depth
             max_depth_node = node
