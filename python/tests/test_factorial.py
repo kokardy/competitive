@@ -1,10 +1,14 @@
-from competitive.factorial import mod_factorial
+"""Factorial test"""
+
+from functools import reduce
+
+from src.factorial import mod_factorial
 
 MOD = 998244353
 
 
-def test__modfac():
-    from functools import reduce
+def test_mod_factorial() -> None:
+    """Mod factorial test"""
 
     def _fac(n):
         return reduce(lambda a, b: a * b, range(1, n + 1))

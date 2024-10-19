@@ -1,7 +1,10 @@
-from competitive.primes import primes, prime_factorization
+"""Test primes"""
+
+from src.primes import prime_factorization, primes
 
 
-def test__primes():
+def test__primes() -> None:
+    """Primes test"""
     n = 20
     print("prime:", end="")
     expected = [2, 3, 5, 7, 11, 13, 17, 19]
@@ -12,7 +15,8 @@ def test__primes():
     print("")
 
 
-def test__prime_factorization():
+def test__prime_factorization() -> None:
+    """Test prime_factorization"""
     n = 13 * 17 * 11 * 11
     pf = prime_factorization(n)
     ans = {13: 1, 17: 1, 11: 2}

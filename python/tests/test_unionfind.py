@@ -1,12 +1,16 @@
-from competitive.unionfind import UnionFind
+"""UnionFind test"""
 
+from src.unionfind import UnionFind
 
 unions1 = [1, 2, 3, 4, 9]
 unions6 = [6, 5, 8]
 
 
 class TestUnionFind:
-    def test_unionfind(self):
+    """UnionFind test"""
+
+    def test_unionfind(self) -> None:
+        """UnionFind test"""
         union = UnionFind(100)
 
         for u in unions1:
