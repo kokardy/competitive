@@ -1,0 +1,8 @@
+ignoreWords:
+  - mypy
+  - unionfind
+  - bsearch
+  - popleft
+  - popright
+  - dtype
+  - arange

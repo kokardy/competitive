@@ -1,11 +1,14 @@
+"""Combination test"""
+
+from src.combination import create_mod_combinations, mod_combination_all
+
 MOD = 998244353
 
 
-def test():
-    from competitive.combination import create_mod_combinations
-    from competitive.combination import mod_combination_all
+def test() -> None:
+    """Mod combination test"""
 
-    def _test(n):
+    def _test(n) -> None:
         expected = mod_combination_all(n, MOD)
         mod_combinations = create_mod_combinations(n, MOD)
         for i, e in zip(range(0, n + 1), expected):
@@ -17,10 +20,8 @@ def test():
         _test(n)
 
 
-def test_combination():
-
-    from competitive.combination import mod_combination_all
-
+def test_combination() -> None:
+    """Combination test"""
     expected = [
         (0,),
         (1, 1),
@@ -33,7 +34,7 @@ def test_combination():
 
     print("")
 
-    def _test(n):
+    def _test(n) -> None:
         result = tuple(mod_combination_all(n, MOD))
         e = expected[n]
         print(f"{n}: result:{result} expected:{e}")

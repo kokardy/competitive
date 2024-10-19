@@ -1,6 +1,11 @@
-def test_plus():
+"""Test for BIT"""
+
+from src.BIT import BIT
+
+
+def test_plus() -> None:
+    """Plus BIT test"""
     print("plus BIT")
-    from competitive.BIT import BIT
 
     n = 10
     bit = BIT(n, lambda x, y: x + y, 0)
@@ -25,9 +30,9 @@ def test_plus():
     assert bit.value(0) == 0
 
 
-def test_mul():
+def test_mul() -> None:
+    """Mul BIT test"""
     print("mul BIT")
-    from competitive.BIT import BIT
 
     n = 10
     bit = BIT(n, lambda x, y: x * y, 1)

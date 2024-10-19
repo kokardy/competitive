@@ -1,7 +1,10 @@
-from competitive.tree import Tree
+"""Tree test"""
+
+from src.tree import Tree
 
 
-def test_tree():
+def test_tree() -> None:
+    """Tree test"""
     tree = Tree(10)
     edges = (
         (0, 1),

@@ -1,8 +1,12 @@
+"""Combination functions"""
+
 from typing import Callable, Iterable, List
+
+import numpy as np
 
 
 def create_mod_combinations(n: int, mod: int) -> Callable[[int], int]:
-    """create function: function(r) -> nCr % mod"""
+    """Create function: function(r) -> nCr % mod"""
     fac: List[int] = [1]
     inv: List[int] = [1]
     for i in range(1, n + 1):
@@ -22,9 +26,7 @@ def create_mod_combinations(n: int, mod: int) -> Callable[[int], int]:
 
 
 def mod_combination_all(n: int, mod: int) -> Iterable[int]:
-    """return [nC0, nC1, nC2, ..., nCn]"""
-    import numpy as np
-
+    """Return [nC0, nC1, nC2, ..., nCn]"""
     result = np.array(np.zeros(n + 1), dtype="int64")
     result[-1] = 1
     result[-2] = 1

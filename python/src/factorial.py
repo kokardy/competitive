@@ -1,9 +1,11 @@
-# encoding: utf-8
+"""Factorial"""
+
 from typing import Callable
 from typing import List
 
 
 def mod_factorial(mod: int) -> Callable[[int], int]:
+    """Return mod factorial function"""
     cache: List[int] = [1, 1, 2]
 
     def _factorial(n: int):

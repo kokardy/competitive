@@ -1,7 +1,10 @@
+"""Prime number related functions"""
+
 from typing import Dict, Generator
 
 
 def prime_factorization(n: int) -> Dict[int, int]:
+    """Prime factorization"""
     result: Dict[int, int] = dict()
     tmp: int = n
     for p in primes(n):
@@ -14,6 +17,7 @@ def prime_factorization(n: int) -> Dict[int, int]:
 
 # slow
 def primes2(n: int) -> Generator[int, None, None]:
+    """Slow prime generator"""
     yield 2
     import numpy as np
 
@@ -24,14 +28,15 @@ def primes2(n: int) -> Generator[int, None, None]:
     c = b.reshape(
         (nn - 1) * (nn - 1),
     )
-    notprimes = set(c)
+    not_primes = set(c)
     for p in range(3, n + 1, 2):
-        if p not in notprimes:
+        if p not in not_primes:
             yield p
 
 
 # faster than primes2
 def primes(n: int) -> Generator[int, None, None]:
+    """Fast prime generator"""
     import numpy as np
 
     numbers = np.full(n + 1, True, dtype="bool")
