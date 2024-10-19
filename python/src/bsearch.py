@@ -2,9 +2,12 @@
 
 from typing import Callable, Tuple
 
+type number = int | float
+
 
 def bsearch_int(bot: int, top: int, f: Callable[[int], bool]) -> Tuple[int, int]:
-    """一般化二分探索関数
+    """
+    一般化二分探索関数
 
     Parameters
     ----------
@@ -34,7 +37,8 @@ def bsearch_int(bot: int, top: int, f: Callable[[int], bool]) -> Tuple[int, int]
 
 
 def bsearch_float(bot: float, top: float, diff: float, f: Callable[[float], bool]) -> Tuple[float, float]:
-    """一般化二分探索関数 float版
+    """
+    一般化二分探索関数 float版
 
     Parameters
     ----------
@@ -65,7 +69,13 @@ def bsearch_float(bot: float, top: float, diff: float, f: Callable[[float], bool
     return (bot, top)
 
 
-def bsearch(bot, top, f, middle_func=lambda x, y: (x + y) // 2, accuracy=1):
+def bsearch(
+    bot: number,
+    top: number,
+    f,
+    middle_func=lambda x, y: (x + y) // 2,
+    accuracy=1,
+):
     """一般化二分探索関数"""
     while top - bot > accuracy:
         mid = middle_func(bot, top)
