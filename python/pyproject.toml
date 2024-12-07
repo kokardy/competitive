@@ -3,7 +3,10 @@ name = "competitive_python"
 version = "0.1.0"
 description = "Add your description here"
 authors = [{ name = "kokardy", email = "mgc1028@gmail.com" }]
-dependencies = ["numpy>=2.1.2"]
+dependencies = [
+    "numpy>=2.1.2",
+    "ruff>=0.8.2",
+]
 readme = "README.md"
 requires-python = ">= 3.8"
 

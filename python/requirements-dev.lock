@@ -22,6 +22,7 @@ packaging==24.1
 pluggy==1.5.0
     # via pytest
 pytest==8.3.3
-ruff==0.7.0
+ruff==0.8.2
+    # via competitive-python
 typing-extensions==4.12.2
     # via mypy

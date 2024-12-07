@@ -36,7 +36,9 @@ def bsearch_int(bot: int, top: int, f: Callable[[int], bool]) -> Tuple[int, int]
     return bot, top
 
 
-def bsearch_float(bot: float, top: float, diff: float, f: Callable[[float], bool]) -> Tuple[float, float]:
+def bsearch_float(
+    bot: float, top: float, diff: float, f: Callable[[float], bool]
+) -> Tuple[float, float]:
     """
     一般化二分探索関数 float版
 
