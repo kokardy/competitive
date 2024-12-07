@@ -11,3 +11,5 @@
 -e file:.
 numpy==2.1.2
     # via competitive-python
+ruff==0.8.2
+    # via competitive-python
